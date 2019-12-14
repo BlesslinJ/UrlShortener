@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="content-section">
+    <form method="GET" >
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">{{ legend }}</legend>
+            <div class="form-group">
+                {{ form.Original.label(class="form-control-label") }}
+                {% if form.Original.errors %}
+                    {{ form.Original(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.Original.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.Original(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.New.label(class="form-control-label") }}
+                {% if form.New.errors %}
+                    {{ form.New(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.New.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.New(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <small class="text-muted">Hope you liked the option to use a custom text in the shortened link. This is very useful to remember the content of the site to which it links.</small>
+        </fieldset>
+    </form>
+    <a href={{link}} >Click here to visit the URL!</a>
+</div>
+{% endblock content %}
